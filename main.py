@@ -14,11 +14,9 @@ def watermark_with_transparency(input_path, output_path, watermark_path):
     transparent.paste(watermark, position, mask=watermark)
     transparent.save(output_path)
 
-
 def getImages(dir_path):
     all_files = [f for f in listdir(dir_path) if isfile(join(dir_path, f))]
     return list(filter(lambda x:x.split(".")[1] in ["png","jpeg"], all_files))
-
 
 def watermark_dir(dir_path):
     images = getImages(dir_path)

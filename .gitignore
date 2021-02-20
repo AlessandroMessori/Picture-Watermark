@@ -2,5 +2,7 @@
 build/
 dist/
 *.spec
-immagini/
-immagini_firmate/
+__pycache__
+*.png
+*.jpeg
+
