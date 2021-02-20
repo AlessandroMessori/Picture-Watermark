@@ -1,6 +1,7 @@
-from os import listdir,mkdir
+from os import listdir,mkdir,environ
 from os.path import isfile, join
 from PIL import Image
+from tkinter import filedialog
 
 def watermark_with_transparency(input_path, output_path, watermark_path):
     base_image = Image.open(input_path).convert("RGBA")
@@ -12,7 +13,7 @@ def watermark_with_transparency(input_path, output_path, watermark_path):
     transparent.paste(base_image, (0, 0))
     transparent.paste(watermark, position, mask=watermark)
     
-    transparent.show()
+    #transparent.show()
     transparent.save(output_path)
 
 
@@ -33,8 +34,16 @@ def watermark_dir(dir_path):
         output_path = dir_path + "_firmate/" + split[0] + "_watermarked." + split[1] 
         watermark_with_transparency(dir_path + "/" + img,output_path, 'firma.png')
 
+def create_window():    
+    if environ.get('DISPLAY','') == '':
+        print('no display found. Using :0.0')
+        environ.__setitem__('DISPLAY', ':0.0')
+
+    folder_selected = filedialog.askdirectory()
+    watermark_dir(folder_selected)
+
 if __name__ == '__main__':
-    watermark_dir("./immagini")
+    create_window()
 
 
 

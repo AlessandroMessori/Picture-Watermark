@@ -1,0 +1,6 @@
+.vscode/
+build/
+dist/
+*.spec
+immagini/
+immagini_firmate/
