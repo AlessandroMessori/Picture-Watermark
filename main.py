@@ -12,13 +12,12 @@ def watermark_with_transparency(input_path, output_path, watermark_path):
     transparent = Image.new('RGBA', (width, height), (0, 0, 0, 0))
     transparent.paste(base_image, (0, 0))
     transparent.paste(watermark, position, mask=watermark)
-    
-    #transparent.show()
     transparent.save(output_path)
 
 
 def getImages(dir_path):
-    return [f for f in listdir(dir_path) if isfile(join(dir_path, f))]
+    all_files = [f for f in listdir(dir_path) if isfile(join(dir_path, f))]
+    return list(filter(lambda x:x.split(".")[1] in ["png","jpeg"], all_files))
 
 
 def watermark_dir(dir_path):
