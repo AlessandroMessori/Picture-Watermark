@@ -13,7 +13,7 @@ def watermark_with_transparency(input_path, output_path, watermark_path):
     #scale and position watermark
     size = width if (width > height) else height
     watermark_ratio = 6.5
-    resized_watermark = ( int(size / 7) ,int(size / 7 / watermark_ratio))
+    resized_watermark = ( int(size / 5) ,int(size / 5 / watermark_ratio))
     position = (int(width * 0.98 - resized_watermark[0] ),int(height * 0.95))
     watermark = watermark.resize(resized_watermark)
 
@@ -41,7 +41,7 @@ def watermark_dir(dir_path):
     for img in images:
         split = img.split(".")
         output_path = dir_path + "_firmate/" + split[0] + "_watermarked." + split[1] 
-        watermark_with_transparency(dir_path + "/" + img,output_path, 'firma.png')
+        watermark_with_transparency(dir_path + "/" + img,output_path, 'watermark.png')
 
 #starts window for folder selection
 def create_window():    
