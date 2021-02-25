@@ -4,5 +4,6 @@ dist/
 *.spec
 immagini/
 immagini_firmate/
+immagini_trasparente/
 __pycache__/
 *.jpeg
